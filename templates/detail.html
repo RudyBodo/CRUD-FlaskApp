@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+      <h2>Detail Barang</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jenis Barang</th>
+            <th>Jumlah</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tr>
+            <tbody>
+                <td>{{barang.nama_barang}}</td>
+                <td>{{barang.jenis_barang}}</td>
+                <td>{{barang.jumlah}}</td>
+                <td><a href="/edit/{{barang.id}}">Edit</a> <a href="/delete/{{barang.id}}">Delete</a></td>
+            </tbody>
+        </tr>
+      </table>
+    </div>
+{% endblock %}
