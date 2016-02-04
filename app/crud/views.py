@@ -18,11 +18,12 @@ def add():
     if request.method == "POST":
         namaBarang = request.form.get("NamaBarang", None)
         jenisBarang = request.form.get("JenisBarang", None)
-        jumlah = request.form.get("Jumlah", None)
-        db.session.commit()
-        iNput = Barang(namaBarang,jenisBarang,jumlah)
+        value = request.form.get("Jumlah", None)
+        iNput = Barang(namaBarang,jenisBarang,value)
         db.session.add(iNput)
+        db.session.commit()
         return redirect('/')
+
     return render_template('add.html',**locals())
 
 @crud_views.route('/edit')
