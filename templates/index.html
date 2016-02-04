@@ -18,7 +18,7 @@
                 <td>{{list.nama_barang}}</td>
                 <td>{{list.jenis_barang}}</td>
                 <td>{{list.jumlah}}</td>
-                <td>Edit Delete</td>
+                <td><a href="/edit{{list.id}}">Edit</a> <a href="/delete{{list.id}}">Delete</a></td>
             </tbody>
         </tr>
         {% endfor %}
