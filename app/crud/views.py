@@ -26,10 +26,27 @@ def add():
 
     return render_template('add.html',**locals())
 
-@crud_views.route('/edit')
-def edit():
-    return render_template('edit.html')
+@crud_views.route('/edit/<int:id>', methods=["POST", "GET"])
+def edit(id):
+    barang = Barang.query.get(id)
+    if request.method == "POST":
+        barang = Barang.query.get(id)
+        newBarang = request.form.get("NamaBarang", None)
+        newJenisBarang = request.form.get("JenisBarang", None)
+        newValue = request.form.get("Jumlah", None)
+        barang.nama_barang = newBarang
+        barang.jenis_barang = newJenisBarang
+        barang.jumlah = newValue
+        newData = Barang(newBarang, newJenisBarang, newValue)
+        db.session.add(newData)
+        db.session.commit()
+        return redirect('/')
 
-@crud_views.route('/delete')
-def delete():
-    return render_template('index.html')
+    return render_template('edit.html', **locals())
+
+@crud_views.route('/delete/<int:id>')
+def delete(id):
+    barang = Barang.query.get(id)
+    db.session.delete(barang)
+    db.session.commit()
+    return redirect('/')
