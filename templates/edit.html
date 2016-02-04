@@ -2,20 +2,20 @@
 {% block content %}
     <div class="container">
       <h2>Edit Barang</h2>
-      <form role="form">
+      <form role="form" action="/edit/{{barang.id}}" method="post">
         <div class="form-group">
           <label for="NamaBarang">Nama Barang:</label>
-          <input type="text" class="form-control" placeholder="Nama Barang">
+          <input type="text" class="form-control" placeholder="Nama Barang Baru">
         </div>
 
         <div class="form-group">
           <label for="JenisBarang">Jenis Barang:</label>
-          <input type="text" class="form-control" placeholder="Jenis Barang">
+          <input type="text" class="form-control" placeholder="Jenis Barang Baru">
         </div>
 
         <div class="form-group">
           <label for="Jumlah">Jumlah:</label>
-          <input type="text" class="form-control" placeholder="Jumlah Barang">
+          <input type="text" class="form-control" placeholder="Jumlah">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
