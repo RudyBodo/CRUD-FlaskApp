@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+      <h2>Daftar Barang</h2>
+      <a href="/add"><h3>Tambah</h3></a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jenis Barang</th>
+            <th>Jumlah</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {% for list in goods %}
+        <tr>
+            <tbody>
+                <td>{{list.nama_barang}}</td>
+                <td>{{list.jenis_barang}}</td>
+                <td>{{list.jumlah}}</td>
+                <td>Edit Delete</td>
+            </tbody>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock %}
