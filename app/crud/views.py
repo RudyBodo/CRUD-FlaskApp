@@ -12,11 +12,6 @@ def home():
     goods = Barang.query.all()
     return render_template('index.html', **locals())
 
-@crud_views.route('/detail/<int:id>')
-def view(id):
-    barang = Barang.query.get(id)
-    return render_template('detail.html', **locals())
-
 #add Stock in store
 @crud_views.route('/add', methods=["POST", "GET"])
 def add():
@@ -35,14 +30,9 @@ def add():
 def edit(id):
     barang = Barang.query.get(id)
     if request.method == "POST":
-        newBarang = request.form.get("NamaBarang", None)
-        newJenisBarang = request.form.get("JenisBarang", None)
-        newValue = request.form.get("Jumlah", None)
-        barang.nama_barang = newBarang
-        barang.jenis_barang = newJenisBarang
-        barang.jumlah = newValue
-        newData = Barang(newBarang, newJenisBarang, newValue)
-        db.session.add(newData)
+        barang.nama_barang = request.form.get("NamaBarang", None)
+        barang.jenis_barang = request.form.get("JenisBarang", None)
+        barang.jumlah = request.form.get("Jumlah", None)
         db.session.commit()
         return redirect('/')
 
